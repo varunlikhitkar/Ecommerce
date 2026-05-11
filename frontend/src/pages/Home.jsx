@@ -29,7 +29,7 @@ const Home = () => {
         <p>Shop premium products with secure checkout, fast delivery, and thoughtful curation.</p>
         <div style={{ marginTop: '28px', display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
           <Button to="/shop" size="lg">Start Shopping</Button>
-          <Button to="/about" variant="secondary" size="lg">Why ShopNest</Button>
+          <Button to="/about" variant="secondary" size="lg">Why Saha Traditions</Button>
         </div>
       </section>
 

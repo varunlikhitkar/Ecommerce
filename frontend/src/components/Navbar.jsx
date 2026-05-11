@@ -20,13 +20,13 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-actions">
         <div className="navbar-brand">
-          <Link to="/" aria-label="ShopNest home">
+          <Link to="/" aria-label="Saha Traditions home">
             <img
-              src="/ShopNestLogo.png"
-              alt="ShopNest"
-              style={{ height: '36px', width: '36px', borderRadius: '8px', objectFit: 'cover', filter: 'drop-shadow(0 2px 8px rgba(249, 115, 22, 0.35))' }}
+              src="/SahaLogo.png"
+              alt="Saha Traditions"
+              style={{ height: '36px', width: '36px', borderRadius: '8px', objectFit: 'cover', filter: 'drop-shadow(0 2px 8px rgba(217, 92, 71, 0.35))' }}
             />
-            ShopNest
+            Saha Traditions
           </Link>
         </div>
         <button

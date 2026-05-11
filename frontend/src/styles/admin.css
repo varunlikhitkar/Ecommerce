@@ -23,26 +23,26 @@
 }
 
 .stat-card {
-  background: #151724;
-  border: 1px solid rgba(148, 163, 184, 0.12);
+  background: var(--card);
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
   border-radius: 14px;
   padding: 22px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.4);
+  box-shadow: var(--shadow);
 }
 
 .stat-card h4 {
   margin-bottom: 0;
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 0.95rem;
 }
 
 .stat-value {
   font-size: 2.1rem;
   font-weight: 700;
-  color: #f97316;
+  color: var(--accent);
 }
 
 .admin-actions {
@@ -63,22 +63,22 @@
 }
 
 .admin-table thead {
-  background: rgba(15, 23, 42, 0.7);
+  background: var(--bg-elevated);
 }
 
 .admin-table th {
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
 .admin-table tr {
-  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.16);
 }
 
 .admin-table tbody tr:hover {
-  background: rgba(15, 23, 42, 0.5);
+  background: var(--bg-elevated);
 }
 
 .table-actions {
@@ -88,9 +88,9 @@
 }
 
 .status-select {
-  background: #0c0f18;
-  color: #e2e8f0;
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
   border-radius: 8px;
   padding: 6px 10px;
 }

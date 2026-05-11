@@ -59,7 +59,7 @@ const Checkout = () => {
         key: 'rzp_test_dummykey123', // Student dummy fallback
         amount: orderData.amount,
         currency: orderData.currency,
-        name: 'ShopNest',
+        name: 'Saha Traditions',
         description: 'Test Transaction',
         order_id: orderData.id,
         handler: async function (response) {
@@ -101,7 +101,7 @@ const Checkout = () => {
           contact: '9999999999'
         },
         theme: {
-          color: '#f97316'
+          color: '#D95C47'
         }
       };
       

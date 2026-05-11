@@ -1,6 +1,6 @@
 .site-footer {
-  background: #0b0c10;
-  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  background: var(--footer-bg);
+  border-top: 1px solid rgba(var(--accent-rgb), 0.22);
   padding: 40px 20px;
   margin-top: auto;
 }
@@ -16,7 +16,7 @@
 }
 
 .footer-brand h3 {
-  color: #f97316;
+  color: var(--accent);
   margin-bottom: 10px;
 }
 
@@ -27,11 +27,15 @@
 }
 
 .footer-links a {
-  color: #94a3b8;
+  color: var(--footer-link);
   font-size: 0.9rem;
 }
 
+.footer-links a:hover {
+  color: var(--accent);
+}
+
 .footer-meta {
-  color: #94a3b8;
+  color: var(--footer-meta);
   font-size: 0.9rem;
 }

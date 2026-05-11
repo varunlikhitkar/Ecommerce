@@ -52,8 +52,8 @@ const AddProduct = () => {
   };
 
   return (
-    <div style={{ maxWidth: '600px', margin: '40px auto', background: '#18181b', padding: '40px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
-      <h2 style={{ color: '#f97316', marginBottom: '20px' }}>Add New Product</h2>
+    <div style={{ maxWidth: '600px', margin: '40px auto', background: '#FFFFFF', padding: '40px', borderRadius: '12px', border: '1px solid rgba(217, 92, 71, 0.22)' }}>
+      <h2 style={{ color: '#D95C47', marginBottom: '20px' }}>Add New Product</h2>
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
         <input 
           type="text" placeholder="Product Name" required 
@@ -81,12 +81,12 @@ const AddProduct = () => {
           style={inputStyle} 
         />
         
-        <div style={{ padding: '15px', border: '1px dashed #f97316', borderRadius: '8px' }}>
-          <label style={{ display: 'block', marginBottom: '10px', color: '#a1a1aa' }}>Upload Product Image (Cloudinary)</label>
+        <div style={{ padding: '15px', border: '1px dashed #D95C47', borderRadius: '8px' }}>
+          <label style={{ display: 'block', marginBottom: '10px', color: '#6B6763' }}>Upload Product Image (Cloudinary)</label>
           <input 
             type="file" accept="image/*" required 
             onChange={(e) => setImage(e.target.files[0])} 
-            style={{ color: '#fff' }}
+            style={{ color: '#2B2B2B' }}
           />
         </div>
 
@@ -100,10 +100,10 @@ const AddProduct = () => {
 
 const inputStyle = {
   padding: '12px',
-  background: '#09090b',
-  border: '1px solid #27272a',
+  background: '#FFFFFF',
+  border: '1px solid rgba(217, 92, 71, 0.25)',
   borderRadius: '6px',
-  color: '#fff',
+  color: '#2B2B2B',
   fontSize: '15px',
   outline: 'none'
 };
