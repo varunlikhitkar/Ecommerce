@@ -37,41 +37,62 @@ const Checkout = () => {
   const handlePayment = async () => {
     try {
       setIsPaying(true);
+
+      // ✅ STEP 1: Get Razorpay Key from backend
+      const keyRes = await fetch('/api/payment/key');
+      const { key } = await keyRes.json();
+
+      if (!key) {
+        setIsPaying(false);
+        return alert("Razorpay key not found");
+      }
+
+      // ✅ STEP 2: Create Order
       const orderRes = await fetch('/api/payment/order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount: totalPrice })
       });
+
       const orderData = await orderRes.json();
 
       if (!orderRes.ok) {
-        // Razorpay unconfigured exception handler
-        const fallback = window.confirm("Razorpay keys unconfigured on backend. Use Student Bypass Mode to place test order?");
-        if (fallback) {
-          return bypassPayment();
-        } else {
-          setIsPaying(false);
-          return alert("Payment failed to initialize");
-        }
+        setIsPaying(false);
+        return alert(orderData.message || "Order creation failed");
       }
 
+      console.log("ORDER DATA:", orderData);
+
+      // ✅ STEP 3: Razorpay Options
       const options = {
-        key: 'rzp_test_dummykey123', // Student dummy fallback
+        key: key, // ✅ FIXED (no dummy key)
         amount: orderData.amount,
         currency: orderData.currency,
         name: 'ShopNest',
         description: 'Test Transaction',
         order_id: orderData.id,
+
         handler: async function (response) {
+          console.log("PAYMENT RESPONSE:", response);
+
+          // ✅ STEP 4: Verify Payment
           const verifyRes = await fetch('/api/payment/verify', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(response)
+            body: JSON.stringify({
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+            })
           });
+
+          const verifyData = await verifyRes.json();
+
           if (verifyRes.ok) {
+            // ✅ STEP 5: Save Order
             const saveOrderRes = await fetch('/api/orders', {
               method: 'POST',
-              headers: { 
+              headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${user.token}`
               },
@@ -87,28 +108,48 @@ const Checkout = () => {
               dispatch(clearCart());
               navigate('/ordersuccess');
             } else {
-              setIsPaying(false);
               alert('Order saving failed');
+              setIsPaying(false);
             }
           } else {
+            alert(verifyData.message || "Payment verification failed");
             setIsPaying(false);
-            alert('Payment verification failed');
           }
         },
+
+        // ✅ EXTRA DEBUG (VERY IMPORTANT)
+        modal: {
+          ondismiss: function () {
+            console.log("Payment popup closed");
+            setIsPaying(false);
+          }
+        },
+
         prefill: {
           name: address.fullName,
           email: user?.email,
           contact: '9999999999'
         },
+
         theme: {
           color: '#f97316'
         }
       };
-      
+
       const rzp1 = new window.Razorpay(options);
+
+      // ✅ ERROR HANDLER (IMPORTANT)
+      rzp1.on('payment.failed', function (response) {
+        console.error("PAYMENT FAILED:", response.error);
+        alert(response.error.description || "Payment failed");
+        setIsPaying(false);
+      });
+
       rzp1.open();
+
     } catch (error) {
-      console.error(error);
+      console.error("ERROR:", error);
+      alert("Something went wrong");
       setIsPaying(false);
     }
   };
@@ -116,7 +157,7 @@ const Checkout = () => {
   const bypassPayment = async () => {
     const saveOrderRes = await fetch('/api/orders', {
       method: 'POST',
-      headers: { 
+      headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${user.token}`
       },
