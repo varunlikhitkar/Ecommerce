@@ -68,7 +68,7 @@ const Checkout = () => {
         key: key, // ✅ FIXED (no dummy key)
         amount: orderData.amount,
         currency: orderData.currency,
-        name: 'ShopNest',
+        name: 'Saha Traditions',
         description: 'Test Transaction',
         order_id: orderData.id,
 
@@ -132,7 +132,7 @@ const Checkout = () => {
         },
 
         theme: {
-          color: '#f97316'
+          color: '#D95C47'
         }
       };
 

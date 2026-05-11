@@ -40,10 +40,10 @@ const AdminDashboard = () => {
   return (
     <div className="admin-page">
       <div className="admin-hero">
-        <img src="/ShopNestLogo.png" alt="Logo" />
+        <img src="/SahaLogo.png" alt="Logo" />
         <div>
           <h2>Admin Dashboard</h2>
-          <p className="subtle-text">Welcome back, <span style={{ color: '#fff' }}>{user?.name}</span></p>
+          <p className="subtle-text">Welcome back, <span style={{ color: '#2B2B2B' }}>{user?.name}</span></p>
         </div>
       </div>
 
@@ -71,7 +71,7 @@ const AdminDashboard = () => {
       )}
 
       <div className="section">
-        <h3 style={{ marginBottom: '20px', color: '#f97316' }}>Administrative Controls</h3>
+        <h3 style={{ marginBottom: '20px', color: '#D95C47' }}>Administrative Controls</h3>
         <div className="admin-actions">
           <Button onClick={() => navigate('/admin/add-product')}>+ Add Product</Button>
           <Button variant="secondary" onClick={() => navigate('/admin/products')}>📦 Manage Products</Button>

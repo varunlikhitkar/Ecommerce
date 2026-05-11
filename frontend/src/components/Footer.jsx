@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="site-footer">
       <div className="footer-content">
         <div className="footer-brand">
-          <h3>ShopNest</h3>
+          <h3>Saha Traditions</h3>
           <p className="subtle-text">Premium E-Commerce Platform.</p>
         </div>
 
@@ -18,7 +18,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-meta">
-          &copy; {new Date().getFullYear()} ShopNest. All rights reserved.
+          &copy; {new Date().getFullYear()} Saha Traditions. All rights reserved.
         </div>
       </div>
     </footer>

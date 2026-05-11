@@ -11,14 +11,14 @@ const generateOtp = () => Math.floor(100000 + Math.random() * 900000).toString()
 
 const sendOtpEmail = async ({ name, email, otp }) => {
   const message = `
-    <h2>Welcome to ShopNest, ${name}!</h2>
+    <h2>Welcome to Saha Traditions, ${name}!</h2>
     <p>Use the OTP below to verify your account. This OTP expires in 10 minutes.</p>
     <p>Your one-time verification OTP is: <strong>${otp}</strong></p>
   `;
 
   await sendEmail({
     email,
-    subject: 'ShopNest - Verify your account',
+    subject: 'Saha Traditions - Verify your account',
     message
   });
 };

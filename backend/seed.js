@@ -18,8 +18,8 @@ const importData = async () => {
     const hashedPassword = await bcrypt.hash('password123', salt);
     
     const adminUser = await User.create({
-      name: 'satyam',
-      email: 'satyam@gmail.com',
+      name: 'Admin User',
+      email: 'admin@saha-traditions.com',
       password: hashedPassword,
       role: 'admin',
       isVerified: true
