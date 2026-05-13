@@ -16,7 +16,7 @@ const Cart = () => {
   };
 
   const handleUpdateQty = (item, qty) => {
-    if (qty > 0) {
+    if (qty > 0 && qty <= item.stock) {
       dispatch(addToCart({ ...item, qty }));
     }
   };

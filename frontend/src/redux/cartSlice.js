@@ -13,10 +13,10 @@ const cartSlice = createSlice({
       const existItem = state.cartItems.find((x) => x.productId === item.productId);
       if (existItem) {
         state.cartItems = state.cartItems.map((x) =>
-          x.productId === existItem.productId ? item : x
+          x.productId === existItem.productId ? { ...item, qty: Math.min(item.qty, item.stock) } : x
         );
       } else {
-        state.cartItems.push(item);
+        state.cartItems.push({ ...item, qty: Math.min(item.qty, item.stock) });
       }
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
     },

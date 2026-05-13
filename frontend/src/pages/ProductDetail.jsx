@@ -39,12 +39,19 @@ const ProductDetail = () => {
 
   const handleAddToCart = () => {
     if (product) {
+      const validQty = Math.min(qty, product.stock);
+      if (validQty === 0) {
+        setNotice('Product out of stock!');
+        setTimeout(() => setNotice(''), 2000);
+        return;
+      }
       dispatch(addToCart({
         productId: product._id,
         name: product.name,
         price: product.price,
         imageUrl: product.imageUrl,
-        qty
+        qty: validQty,
+        stock: product.stock
       }));
       setNotice('Added to cart!');
       setTimeout(() => setNotice(''), 2000);
@@ -53,12 +60,19 @@ const ProductDetail = () => {
 
   const handleBuyNow = () => {
     if (product) {
+      const validQty = Math.min(qty, product.stock);
+      if (validQty === 0) {
+        setNotice('Product out of stock!');
+        setTimeout(() => setNotice(''), 2000);
+        return;
+      }
       dispatch(addToCart({
         productId: product._id,
         name: product.name,
         price: product.price,
         imageUrl: product.imageUrl,
-        qty
+        qty: validQty,
+        stock: product.stock
       }));
       navigate('/checkout');
     }
@@ -96,7 +110,7 @@ const ProductDetail = () => {
             <div className="qty-selector" aria-label="Quantity selector">
               <button onClick={() => setQty((q) => Math.max(1, q - 1))} aria-label="Decrease quantity">-</button>
               <span>{qty}</span>
-              <button onClick={() => setQty((q) => q + 1)} aria-label="Increase quantity">+</button>
+              <button onClick={() => setQty((q) => Math.min(q + 1, product.stock))} aria-label="Increase quantity">+</button>
             </div>
             <Button onClick={handleAddToCart} size="lg">Add to Cart</Button>
             <Button onClick={handleBuyNow} size="lg" className="btn-buy-now">Buy Now</Button>

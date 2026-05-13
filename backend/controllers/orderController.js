@@ -1,4 +1,5 @@
 const Order = require('../models/Order');
+const Product = require('../models/Product');
 const sendEmail = require('../utils/sendEmail');
 
 const addOrderItems = async (req, res) => {
@@ -19,6 +20,15 @@ const addOrderItems = async (req, res) => {
     );
     if (invalidItem) {
       return res.status(400).json({ message: 'Invalid order item data' });
+    }
+
+    // Update product stock for each item
+    for (const item of normalizedItems) {
+      const product = await Product.findById(item.productId);
+      if (product) {
+        product.stock = Math.max(0, product.stock - item.qty);
+        await product.save();
+      }
     }
 
     const order = new Order({
