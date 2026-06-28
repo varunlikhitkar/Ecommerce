@@ -6,16 +6,16 @@
 }
 
 .auth-form {
-  background: #18181b;
+  background: var(--card);
   padding: 40px;
   border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  box-shadow: var(--shadow);
   width: 100%;
   max-width: 420px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
   position: relative;
   overflow: hidden;
 }
@@ -27,7 +27,7 @@
   left: -50%;
   width: 200%;
   height: 4px;
-  background: linear-gradient(90deg, transparent, #f97316, transparent);
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
   animation: shimmer 3s infinite linear;
 }
 
@@ -39,34 +39,50 @@
 .auth-form h2 {
   text-align: center;
   font-size: 2rem;
-  color: #fff;
+  color: var(--text);
   margin-bottom: 10px;
 }
 
 .auth-form input {
   padding: 15px;
-  background: #09090b;
-  border: 1px solid #27272a;
-  border-radius: 8px;
+  background: var(--card);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  border-radius: 10px;
   font-size: 15px;
-  color: #fff;
+  color: var(--text);
   outline: none;
   transition: all 0.3s ease;
 }
 
 .auth-form input:focus {
-  border-color: #f97316;
-  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.2);
 }
 
 .auth-form p {
   text-align: center;
   margin-top: 15px;
-  color: #a1a1aa;
+  color: var(--muted);
+}
+
+.auth-note {
+  text-align: center;
+  margin-top: -6px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.auth-link {
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
 }
 
 .auth-form a {
-  color: #f97316;
+  color: var(--accent);
   font-weight: 600;
 }
 

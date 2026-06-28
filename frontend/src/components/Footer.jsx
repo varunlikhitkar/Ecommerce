@@ -1,36 +1,62 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/footer.css';
 
 const Footer = () => {
   return (
-    <footer style={{
-      background: '#09090b',
-      borderTop: '1px solid rgba(255, 255, 255, 0.05)',
-      padding: '40px 20px',
-      marginTop: 'auto'
-    }}>
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        gap: '20px'
-      }}>
-        <div>
-          <h3 style={{ color: '#f97316', marginBottom: '10px' }}>ShopNest</h3>
-          <p style={{ color: '#a1a1aa', fontSize: '0.9rem' }}>Premium E-Commerce Platform.</p>
+    <footer className="site-footer">
+      <div className="footer-content">
+        <div className="footer-grid">
+          <div className="footer-column">
+            <h4>About</h4>
+            <Link to="/footer-info">Contact Us</Link>
+            <Link to="/about">About Us</Link>
+            <Link to="/footer-info">Careers</Link>
+            <Link to="/footer-info">Stories</Link>
+            <Link to="/footer-info">Press</Link>
+            <Link to="/footer-info">Corporate Information</Link>
+          </div>
+
+          <div className="footer-column">
+            <h4>Group Companies</h4>
+            <Link to="/footer-info">Myntra</Link>
+            <Link to="/footer-info">Cleartrip</Link>
+            <Link to="/footer-info">Shopsy</Link>
+          </div>
+
+          <div className="footer-column">
+            <h4>Help</h4>
+            <Link to="/footer-info">Payments</Link>
+            <Link to="/footer-info">Shipping</Link>
+            <Link to="/footer-info">Cancellation & Returns</Link>
+            <Link to="/footer-info">FAQ</Link>
+          </div>
+
+          <div className="footer-column">
+            <h4>Consumer Policy</h4>
+            <Link to="/footer-info">Terms Of Use</Link>
+            <Link to="/footer-info">Privacy</Link>
+            <Link to="/footer-info">Security</Link>
+            <Link to="/footer-info">Sitemap</Link>
+            <Link to="/footer-info">Grievance Redressal</Link>
+            <Link to="/footer-info">EPR Compliance</Link>
+          </div>
+
+          <div className="footer-column footer-address">
+            <h4>Mail Us</h4>
+            <p>Saha Traditions Pvt Ltd, 88 Market Road, Bhopal, India.</p>
+          </div>
+
+          <div className="footer-column footer-address">
+            <h4>Registered Office Address</h4>
+            <p>Saha Traditions Pvt Ltd, Bhopal, India.</p>
+            <p>CIN: U12345MP2026PTC000000</p>
+            <p>Telephone: 044-12345678</p>
+          </div>
         </div>
-        
-        <div style={{ display: 'flex', gap: '20px' }}>
-          <Link to="/about" style={{ color: '#a1a1aa', fontSize: '0.9rem' }}>About Us</Link>
-          <Link to="/return" style={{ color: '#a1a1aa', fontSize: '0.9rem' }}>Return Policy</Link>
-          <Link to="/disclaimer" style={{ color: '#a1a1aa', fontSize: '0.9rem' }}>Disclaimer</Link>
-        </div>
-        
-        <div style={{ color: '#a1a1aa', fontSize: '0.9rem' }}>
-          &copy; {new Date().getFullYear()} ShopNest. All rights reserved.
+
+        <div className="footer-meta">
+          &copy; {new Date().getFullYear()} Saha Traditions. All rights reserved.
         </div>
       </div>
     </footer>

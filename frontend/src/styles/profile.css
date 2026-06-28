@@ -1,0 +1,47 @@
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.12);
+  padding-bottom: 24px;
+}
+
+.profile-meta {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+}
+
+.profile-orders {
+  display: grid;
+  gap: 16px;
+}
+
+.order-card {
+  background: var(--bg-elevated);
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.order-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.order-total {
+  color: var(--accent);
+  font-weight: 600;
+}

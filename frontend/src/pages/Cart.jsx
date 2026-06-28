@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { removeFromCart, addToCart } from '../redux/cartSlice';
+import Button from '../components/ui/Button';
+import EmptyState from '../components/ui/EmptyState';
 import '../styles/cart.css';
 
 const Cart = () => {
@@ -14,7 +16,7 @@ const Cart = () => {
   };
 
   const handleUpdateQty = (item, qty) => {
-    if (qty > 0) {
+    if (qty > 0 && qty <= item.stock) {
       dispatch(addToCart({ ...item, qty }));
     }
   };
@@ -22,10 +24,21 @@ const Cart = () => {
   const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.qty, 0);
 
   return (
-    <div className="cart-container">
-      <h2>Shopping Cart</h2>
+    <div className="page cart-container">
+      <div className="section-header">
+        <div>
+          <h2 className="section-title">Shopping Cart</h2>
+          <p className="subtle-text">Review items before checkout.</p>
+        </div>
+        <Button to="/" variant="secondary">Continue Shopping</Button>
+      </div>
+
       {cartItems.length === 0 ? (
-        <p>Your cart is empty. <Link to="/shop">Go Shopping</Link></p>
+        <EmptyState
+          title="Your cart is empty"
+          description="Browse our catalog and add items you love."
+          action={<Button to="/">Go Shopping</Button>}
+        />
       ) : (
         <div className="cart-layout">
           <div className="cart-items">
@@ -34,11 +47,11 @@ const Cart = () => {
                 <img src={item.imageUrl} alt={item.name} className="cart-item-image" />
                 <div className="cart-item-details">
                   <h4>{item.name}</h4>
-                  <p>₹{item.price}</p>
-                  <div className="qty-controls">
-                    <button onClick={() => handleUpdateQty(item, item.qty - 1)}>-</button>
+                  <p className="subtle-text">₹{item.price}</p>
+                  <div className="qty-controls" aria-label="Quantity controls">
+                    <button onClick={() => handleUpdateQty(item, item.qty - 1)} aria-label="Decrease quantity">-</button>
                     <span>{item.qty}</span>
-                    <button onClick={() => handleUpdateQty(item, item.qty + 1)}>+</button>
+                    <button onClick={() => handleUpdateQty(item, item.qty + 1)} aria-label="Increase quantity">+</button>
                   </div>
                   <button onClick={() => handleRemove(item.productId)} className="btn-remove">Remove</button>
                 </div>
@@ -47,7 +60,12 @@ const Cart = () => {
           </div>
           <div className="cart-summary">
             <h3>Total: ₹{totalPrice.toFixed(2)}</h3>
-            <button onClick={() => navigate('/checkout')} className="btn btn-checkout">Proceed to Checkout</button>
+            <Button onClick={() => navigate('/checkout')} className="btn-checkout" size="lg">
+              Proceed to Checkout
+            </Button>
+            <p className="subtle-text" style={{ marginTop: '16px' }}>
+              Taxes and shipping calculated at checkout.
+            </p>
           </div>
         </div>
       )}
