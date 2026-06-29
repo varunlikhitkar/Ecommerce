@@ -41,7 +41,7 @@ const Navbar = () => {
         <div className="navbar-brand">
           <Link to="/" aria-label="Saha Traditions home">
             <img
-              src="/SahaLogo.png"
+              src="/sahalogo.png"
               alt="Saha Traditions"
               style={{ height: '36px', width: '36px', borderRadius: '8px', objectFit: 'cover', filter: 'drop-shadow(0 2px 8px rgba(217, 92, 71, 0.35))' }}
             />
